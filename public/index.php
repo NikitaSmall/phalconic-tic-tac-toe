@@ -11,6 +11,16 @@ try {
 
     //Create a DI
     $di = new Phalcon\DI\FactoryDefault();
+    
+    // Настраиваем сервис для работы с БД
+    $di->set('db', function(){
+        return new \Phalcon\Db\Adapter\Pdo\Mysql(array(
+            "host" => "localhost",
+            "username" => "root",
+            "password" => "toor",
+            "dbname" => "phalcon"
+        ));
+    });
 
     //Setting up the view component
     $di->set('view', function(){
